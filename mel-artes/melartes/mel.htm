@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mel.css">
+    <title>Mel Artes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
+</head>
+<body>
+  <body>
+  <button id="botaoCarrinho" onclick="abrirCarrinho()">🛒</button>
+  <!-- imagem do produto -->
+  <img src="..." alt="">
+</body>
+
+    <header class="  topo">
+      <section class=" hero-destaque ">
+  <div class="hero-texto">
+    <h2>Bem-vinda ao ateliê da Amelia 💛</h2>
+    <p>Artesanato feito com carinho, crochê e alma costurada em cada peça</p>
+    <a href="#filtros" class="btn-destaque" onclick="abrirAbaCatalogo('todos')">Ver catálogo</a>
+
+
+  </div class="hero-imagem-container">
+  <img src="/melartes/imagens/atleie.jpg" alt="Destaque Mel Artes" class="hero-imagem-pequena">
+</section>
+
+        <img src="/melartes/imagens/mel.jpg" alt="Logo Mel Artes" class="logo">
+        <h1>Artesanato Mellartes</h1>
+   
+        <nav>
+            <ul>
+             <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+              <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <section id="contato" class="oculto">
+  <h2>📬 Fale conosco</h2>
+  <p>Email: <a href="mailto:contato@melartes.com">contato@melartes.com</a></p>
+  <p>Instagram: <a href="https://www.instagram.com/atelie_mellartes?utm_source=ig_web_button_share_sheet&igsh=MTU0ZWI0MjA2amZ1ZA==" target="_blank">atelie_mellartes</a></p>
+  <p>Facebook: <a href="https://www.facebook.com/amelia.gondim.52" target="_blank">facebook.com/Amelia Gondim</a></p>
+</section>
+
+
+    
+  <div class="topo-barra">
+    <div class="barra-busca">
+  <input type="text" placeholder="Buscar produto..." id="barraBusca" oninput="mostrarSugestoes()">
+  <ul id="sugestoes" class="sugestoes-lista"></ul>
+   <span class="icone-lupa" onclick="buscarProduto()">🔍</span>
+   
+
+    </div>
+  <button id="btnImprimirCatalogoTopo" onclick="window.print()">🖨️</button>
+  
+</div>
+
+    </header>
+    <div class="ativo"  id="filtros">
+  <button id="todos" onclick="filtrarProdutos('todos')">Todos</button>
+  <button  id="croche" onclick="filtrarProdutos('croche')">Crochê</button>
+  <button  id="bonecas" onclick="filtrarProdutos('bonecas')">Bonecas</button>
+  <button  id="perfumes" onclick="filtrarProdutos('perfumes')">Perfumes</button>
+  <button  id="roupas" onclick="filtrarProdutos('roupas')">Roupas</button>
+  <button  id="tapetes" onclick="filtrarProdutos('tapetes')">Tapetes</button>
+  <button  id="toalhas" onclick="filtrarProdutos('toalhas')">Toalhas</button>
+   <button  id="diversos" onclick="filtrarProdutos('diversos')">Diversos</button>
+    </div>
+
+    <section  id="produtos">
+  <div class="produto-card croche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/blusaadult.jpg" alt="blusa adulto"  onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Blusa  Adulto')">🤍</span>
+    <h3>Blusa Adulto</h3>
+    </div>
+    <p>R$ 49.90</p>
+    <button onclick="adicionarCarrinho('Blusa adulto', 49.90)">Adicionar ao carrinho</button>
+  </div>
+
+ 
+  <div class="produto-card toalhas catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/toalhafralda.jpg" alt="toalha de fralda"  onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Bata Adulto')">🤍</span>
+    <h3>Toalha de Fralda</h3>
+    </div>
+    <p>R$ 29.90</p>
+    <button onclick="adicionarCarrinho(this,'Toalha de Fralda', 29.90)">Adicionar ao carrinho</button>
+  </div>
+  
+ <!-- Produto com galeria -->
+  <div class="produto-card croche catalogo-card">
+  <div class="galeria-produto">
+    <img id="imagem-biquini" class="imagem-principal" src="/melartes/imagens/biquinef.jpg" alt="Biquini" onclick="ampliarImagem(this.src)">
+    
+    <div class="miniaturas">
+      <!-- Miniaturas chamam o zoom direto -->
+      <img src="/melartes/imagens/biquinef.jpg" onclick="ampliarImagem(this.src)">
+      <img src="/melartes/imagens/biquinet.jpg" onclick="ampliarImagem(this.src)">
+    </div>
+     <span class="favorito" onclick="marcarFavorito(this,'Biquini')">🤍</span>
+    <h3>Biquini</h3>
+  </div>
+  <p>R$ 89.90</p>
+  <button onclick="adicionarCarrinho('Biquini', 89.90)">Adicionar ao carrinho</button>
+</div>
+<div class="produto-card toalhas catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/tolhabatizado.jpg" alt="toalha de fralda"  onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Toalha de batizado')">🤍</span>
+    <h3>Toalha para Batizado</h3>
+    </div>
+    <p>R$ 70.00</p>
+    <button onclick="adicionarCarrinho(this,'Toalha para Batizado', 70.00)">Adicionar ao carrinho</button>
+  </div>
+   <div class="produto-card croche catalogo-card">
+  <div class="galeria-produto">
+    <img id="vestido infantil" class="imagem-principal" src="/melartes/imagens/vestidinhoro.jpg" alt="Vestido infantil" onclick="ampliarImagem(this.src)">
+    
+    <div class="miniaturas">
+      <!-- Miniaturas chamam o zoom direto -->
+      <img src="/melartes/imagens/vestidinhoro.jpg" onclick="ampliarImagem(this.src)">
+      <img src="/melartes/imagens/vestidinhoros.jpg" onclick="ampliarImagem(this.src)">
+    </div>
+     <span class="favorito" onclick="marcarFavorito(this,'Vestido Infantil')">🤍</span>
+    <h3>Vestido Infantil</h3>
+  </div>
+  <p>R$ 189.90</p>
+  <button onclick="adicionarCarrinho('Vestido Infantil', 189.90)">Adicionar ao carrinho</button>
+</div>
+
+
+
+    <div class="produto-card toalhas catalogo-card">
+  <div class="galeria-produto">
+    <img id="toalhas-de-rosto" class="imagem-principal" src="/melartes/imagens/toalharosto1.jpg" alt="Toalhas" onclick="ampliarImagem(this.src)">
+    
+    <div class="miniaturas">
+      <!-- Miniaturas chamam o zoom direto -->
+      <img src="/melartes/imagens/tolhababado1.jpg" onclick="ampliarImagem(this.src)">
+      <img src="/melartes/imagens/toalhababado2.jpg" onclick="ampliarImagem(this.src)">
+    </div>
+  </div>
+  <span class="favorito" onclick="marcarFavorito(this,'Bata Adulto')">🤍</span>
+    <h3>Toalha de Rosto</h3>
+  <p>R$ 50.00</p>
+  <button onclick="adicionarCarrinho('Toalha de Rosto', 50.00)">Adicionar ao carrinho</button>
+</div>
+  
+ 
+
+   
+  <div class="produto-card croche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/blusinhaalca.jpg" alt="blusinha com alca"  onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Bata Adulto')">🤍</span>
+    <h3>Blusinha com Alça</h3>
+    </div>
+    <p>R$ 69.90</p>
+    <button onclick="adicionarCarrinho(this,'Blusinha com alça', 69.90)">Adicionar ao carrinho</button>
+  </div>
+  <div class="produto-card croche catalogo-card">
+  <div class="galeria-produto">
+    <img id="vestido" class="imagem-principal" src="/melartes/imagens/vestidoflor.jpg" alt="vestido" onclick="ampliarImagem(this.src)">
+    
+    <div class="miniaturas">
+      <!-- Miniaturas chamam o zoom direto -->
+      <img src="/melartes/imagens/vestidoinf.jpg" onclick="ampliarImagem(this.src)">
+      <img src="/melartes/imagens/vestipink.jpg" onclick="ampliarImagem(this.src)">
+    </div>
+     <span class="favorito" onclick="marcarFavorito(this,'Vestido')">🤍</span>
+    <h3>Vestido Infantil</h3>
+  </div>
+  <p>R$ 89.90</p>
+  <button onclick="adicionarCarrinho('Vestido infantil', 89.90)">Adicionar ao carrinho</button>
+</div> 
+ 
+  
+  <div class="produto-card croche croche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/bolsa.jpg" alt="bolsa de croche" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Bata Adulto')">🤍</span>
+    <h3>Bolsa</h3>
+    </div>
+    <p>R$ 100,00</p>
+    <button onclick="adicionarCarrinho('Bolsa', 100)">Adicionar ao carrinho</button>
+  </div> 
+<div class="produto-card toalhas catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/tolhahigienica.jpg" alt="toalha de higienica"  onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Bata Adulto')">🤍</span>
+    <h3>Toalha de Higienica</h3>
+    </div>
+    <p>R$ 29.90</p>
+    <button onclick="adicionarCarrinho(this,'Toalha de Higienica', 29.90)">Adicionar ao carrinho</button>
+  </div>
+
+   <div class="produto-card roupas catalogo-card">
+  <div class="galeria-produto">
+    <img id="imagem-biquini" class="imagem-principal" src="/melartes/imagens/pijama.jpg" alt="Roupas" onclick="ampliarImagem(this.src)">
+    
+    <div class="miniaturas">
+      <!-- Miniaturas chamam o zoom direto -->
+      <img src="/melartes/imagens/pijama1.jpg" onclick="ampliarImagem(this.src)">
+      <img src="/melartes/imagens/pijama2.jpg" onclick="ampliarImagem(this.src)">
+    </div>
+     <span class="favorito" onclick="marcarFavorito(this,'Pijama')">🤍</span>
+    <h3>Pijama</h3>
+  </div>
+  <p>R$ 75.00</p>
+  <button onclick="adicionarCarrinho('Pijama', 75.00)">Adicionar ao carrinho</button>
+</div>
+
+
+  <div class="produto-card croche croche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/top.jpg" alt="short infantil" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Top')">🤍</span>
+    <h3>Top</h3>
+    </div>
+    <p>R$ 50,00</p>
+    <button onclick="adicionarCarrinho('Top', 50)">Adicionar ao carrinho</button>
+
+  </div>
+
+   <div class="produto-card croche catalogo-card">
+  <div class="galeria-produto">
+    <img id="saida de praia" class="imagem-principal" src="/melartes/imagens/saidadepraia.jpg" alt="Biquini" onclick="ampliarImagem(this.src)">
+    
+    <div class="miniaturas">
+      <!-- Miniaturas chamam o zoom direto -->
+      <img src="/melartes/imagens/saidadepraia1.jpg" onclick="ampliarImagem(this.src)">
+      <img src="/melartes/imagens/saidadepraiainf.jpg" onclick="ampliarImagem(this.src)">
+    </div>
+     <span class="favorito" onclick="marcarFavorito(this,'Saida de Praia')">🤍</span>
+    <h3>Saida de Praia</h3>
+  </div>
+  <p>R$ 189.90</p>
+  <button onclick="adicionarCarrinho('Saida de praia', 189.90)">Adicionar ao carrinho</button>
+</div>
+
+
+
+<div class="produto-card croche croche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/macacaoinf.jpg" alt="macacao infantil" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Macacao Infantil')">🤍</span>
+    <h3>Macacão Infantil</h3>
+    </div>
+    <p>R$ 100,00</p>
+    <button onclick="adicionarCarrinho('Macacao Infantil', 100)">Adicionar ao carrinho</button>
+  </div> 
+<div class="produto-card croche croche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/manta.jpg" alt="manta" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Manta')">🤍</span>
+    <h3>Manta</h3>
+    </div>
+    <p>R$ 85,00</p>
+    <button onclick="adicionarCarrinho('Manta', 85)">Adicionar ao carrinho</button>
+  </div> 
+
+ <div class="produto-card diversos catalogo-card">
+  <div class="galeria-produto">
+    <img id="imagem-biquini" class="imagem-principal" src="/melartes/imagens/bolsanatelinha.jpg" alt="Biquini" onclick="ampliarImagem(this.src)">
+    
+    <div class="miniaturas">
+      <!-- Miniaturas chamam o zoom direto -->
+      <img src="/melartes/imagens/bolsanatelinha1.jpg" onclick="ampliarImagem(this.src)">
+      <img src="/melartes/imagens/bolsanatelinha2.jpg" onclick="ampliarImagem(this.src)">
+    </div>
+     <span class="favorito" onclick="marcarFavorito(this,'Bolsa na Telinha')">🤍</span>
+    <h3>Bolsa na Telinha</h3>
+  </div>
+  <p>R$ 150.00</p>
+  <button onclick="adicionarCarrinho('Bolsa na Telinha', 150.00)">Adicionar ao carrinho</button>
+</div>
+
+<div class="produto-card roupas catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/blusa.jpg" alt="Blusa Adulto" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Blusa adulto')">🤍</span>
+    <h3>Blusa Adulto</h3>
+    </div>
+    <p>R$ 35.00</p>
+    <button onclick="adicionarCarrinho('Blusa adulto', 35)">Adicionar ao carrinho</button>
+  </div> 
+
+<div class="produto-card roupas catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/blusa2.jpg" alt="Blusa Adulto" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Blusa adulto')">🤍</span>
+    <h3>Blusa Adulto</h3>
+    </div>
+    <p>R$ 35.00</p>
+    <button onclick="adicionarCarrinho('Blusa adulto', 35)">Adicionar ao carrinho</button>
+  </div> 
+
+<div class="produto-card croche croche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/saiaadul.jpg" alt="Saia Adulto" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Saia Adulto')">🤍</span>
+    <h3>Saia Adulto</h3>
+    </div>
+    <p>R$ 125,00</p>
+    <button onclick="adicionarCarrinho('Saia Adulto', 125)">Adicionar ao carrinho</button>
+  </div> 
+
+<div class="produto-card roupas catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/shortpijamainf.jpg" alt="short pijama" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Short pijama')">🤍</span>
+    <h3>Short Pijama</h3>
+    </div>
+    <p>R$ 25.00</p>
+    <button onclick="adicionarCarrinho('Short Pijama', 25)">Adicionar ao carrinho</button>
+  </div> 
+
+  <div class="produto-card croche croche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/shortinf.jpg" alt="short infantil" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Short')">🤍</span>
+    <h3>Short</h3>
+    </div>
+    <p>R$ 30,00</p>
+    <button onclick="adicionarCarrinho('Short', 30)">Adicionar ao carrinho</button>
+  </div> 
+
+
+ <div class="produto-card toalhas catalogo-card">
+  <div class="galeria-produto">
+    <img id="imagem-biquini" class="imagem-principal" src="/melartes/imagens/bolsatoalha.jpg" alt="Biquini" onclick="ampliarImagem(this.src)">
+    
+    <div class="miniaturas">
+      <!-- Miniaturas chamam o zoom direto -->
+      <img src="/melartes/imagens/bolsatoalha1.jpg" onclick="ampliarImagem(this.src)">
+      <img src="/melartes/imagens/bolsatoalha2.jpg" onclick="ampliarImagem(this.src)">
+    </div>
+     <span class="favorito" onclick="marcarFavorito(this,'Bolsa Toalha')">🤍</span>
+    <h3>Bolsa Toalha</h3>
+  </div>
+  <p>R$ 100.00</p>
+  <button onclick="adicionarCarrinho('Bolsa Toalha', 100.00)">Adicionar ao carrinho</button>
+</div>
+
+
+
+  
+  <div class="produto-card croche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/cachecol.jpg" alt="cachecol adulto" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Bata Adulto')">🤍</span>
+    <h3>Cachecol</h3>
+    </div>
+    <p>R$ 150,00</p>
+    <button onclick="adicionarCarrinho('cachecol', 150)">Adicionar ao carrinho</button>
+  </div> 
+  
+  
+  <div class="produto-card diversos catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/cateravacina.jpg"  alt="capa para carteira de Vacina" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Bata Adulto')">🤍</span>
+    <h3>Capa para carteira de Vacina</h3>
+    </div>
+    <p>R$ 49.90</p>
+    <button onclick="adicionarCarrinho('capa para carteira de vacina', 49.90)">Adicionar ao carrinho</button>
+  </div> 
+  
+  <div class="produto-card choche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/bata.jpg" alt="bata adulto"  onclick="ampliarImagem(this.src)">
+    </div>
+    <span class="favorito" onclick="marcarFavorito(this,'Bata Adulto')">🤍</span>
+    <h3>Bata Adulto</h3>
+    <p>R$ 59.90</p>
+    <button onclick="adicionarCarrinho('Bata adulto', 59.90)">Adicionar ao carrinho</button>
+  </div> 
+  
+
+  <div class="produto-card croche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal"  src="/melartes/imagens/cropt1.jpg" alt="cropt infantil" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Bata Adulto')">🤍</span>
+    <h3>Cropt Infantil</h3>
+    </div>
+    <p>R$ 49.90</p>
+    <button onclick="adicionarCarrinho('cropt', 49.90)">Adicionar ao carrinho</button>
+  </div> 
+  
+    <div class="produto-card diversos catalogo-card">
+  <div class="galeria-produto">
+    <img id="imagem-necessarie" class="imagem-principal" src="/melartes/imagens/necessarie1.jpg" alt="Necessaire" onclick="ampliarImagem(this.src)">
+    
+    <div class="miniaturas">
+      <!-- Miniaturas chamam o zoom direto -->
+      <img src="/melartes/imagens/necessarie1.jpg" onclick="ampliarImagem(this.src)">
+      <img src="/melartes/imagens/necessarie2.jpg" onclick="ampliarImagem(this.src)">
+    </div>
+  </div>
+  <span class="favorito" onclick="marcarFavorito(this,'Nécessaire')">🤍</span>
+    <h3>Nécessaire e Toalha</h3>
+  <p>R$ 90.00</p>
+  <button onclick="adicionarCarrinho('Nécessaire e Toalha', 90.00)">Adicionar ao carrinho</button>
+</div>
+
+  <div class="produto-card choche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/vestido1.jpg" alt="vestido adulto"  onclick="ampliarImagem(this.src)">
+    </div>
+    <span class="favorito" onclick="marcarFavorito(this,'vestido adulto')">🤍</span>
+    <h3>Vestido Adulto</h3>
+    <p>R$ 159.90</p>
+    <button onclick="adicionarCarrinho('Vestido Adulto', 159.90)">Adicionar ao carrinho</button>
+  </div>                                                             
+  <div class="produto-card choche catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/macacaob.jpg" alt="macacao bebe"  onclick="ampliarImagem(this.src)">
+    </div>
+    <span class="favorito" onclick="marcarFavorito(this,'macacao')">🤍</span>
+    <h3>Macacão Bebe</h3>
+    <p>R$ 99.90</p>
+    <button onclick="adicionarCarrinho('macacoa bebe', 99.90)">Adicionar ao carrinho</button>
+  </div> 
+  
+  <div class="produto-card toalhas catalogo-card">
+    <div class="galeria-produto">
+    <img class="imagem-principal" src="/melartes/imagens/jogotoalha.jpg" alt="jogo de toalha" onclick="ampliarImagem(this.src)">
+    <span class="favorito" onclick="marcarFavorito(this,'Bata Adulto')">🤍</span>
+    <h3>Jogo de toalha </h3>
+    </div>
+    <p>R$ 300,00</p>
+    <button onclick="adicionarCarrinho('jogo de toalha', 300)">Adicionar ao carrinho</button>
+  </div>
+</section>
+
+<section id="carrinho" class=" oculto">
+  <h2>🛒 Seu carrinho</h2>
+  <ul id="lista-carrinho"></ul>
+  <p><strong>Total:</strong> R$ <span id="total">0.00</span></p>
+  <button onclick="finalizarCompra()">Finalizar Compra pelo WhatsApp</button>
+  <span id="fecharCarrinho" onclick="fecharCarrinho()">❌</span>
+</section>
+
+<section  id="sobre">
+     <div class="sobre-flex">
+        <img src="/melartes/imagens/amelia2.jpg" alt="Foto da artesã Amelia no ateliê" class="foto-artesa">
+   <div class="sobre-texto">    
+  <h2>Sobre a Artesã</h2>
+  
+  <p>
+    Olá! Sou Amelia Gondim, microempreendedora apaixonada por artesanato.
+    Cada peça que você encontra aqui foi criada com dedicação, estudo e muita alma.
+    Estou sempre buscando ampliar meus conhecimentos, experimentar novos materiais
+    e transformar ideias em produtos únicos e cheios de carinho.
+    Acredito que o artesanato é mais que técnica — é afeto costurado em cada detalhe.
+    Obrigada por visitar meu cantinho digital 💛
+  </p>
+   </div>
+     </div>
+</section>
+<section id="localizacao">
+  <h2>📍 Onde estamos</h2>
+  <p>
+    Nosso ateliê está localizado na <strong>Avenida Marinês Souza Gomes, nº 251</strong>, 
+    Jardim Samambaia — Campo Grande/MS.  
+    CEP: 79044-180
+  </p>
+  <div class="mapa">
+    <iframe 
+      src="https://maps.google.com/maps?q=Av+Marinês+Souza+Gomes+251,+Campo+Grande,+MS&z=15&output=embed" 
+      width="100%" 
+      height="300" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+</section>
+
+
+<!-- Área de zoom -->
+  <div id="zoom" class="zoom-oculto" onclick="fecharZoom()">
+  <img id="zoom-img" alt="">
+</div>
+
+
+  <section  id="avaliacao-produto">
+  <h2>Opiniões sobre o Produto</h2>
+  <p id="mediaGeral">Média geral: ⭐ 0.0 de 5 (0 avaliações)</p>
+  <div class="estrelinhas-barra" id="grafico-estrelas"></div>
+</section>
+
+<!-- Logo antes do rodapé -->
+<section id="avaliacao-loja">
+  <h2>💬 Deixe sua avaliação</h2>
+
+  <div class="estrelas-simples">
+    <span onclick="avaliarEstrela(this)">⭐</span>
+    <span onclick="avaliarEstrela(this)">⭐</span>
+    <span onclick="avaliarEstrela(this)">⭐</span>
+    <span onclick="avaliarEstrela(this)">⭐</span>
+    <span onclick="avaliarEstrela(this)">⭐</span>
+  </div>
+
+  <p id="mensagem-avaliacao" style="margin-top: 10px; font-weight: bold;"></p>
+</section>
+
+
+
+  <footer id="rodape">
+  <p>Feito com amor por Patricia 💛 | Mel Artes</p>
+  <p>CNPJ: 28.693.407/0001-60 • Campo Grande/MS</p>
+  
+  <div class="redes-fixas">
+  <a href="https://wa.me/5567991250954" target="_blank" title="WhatsApp">
+    <img src="/melartes/imagens/wats.png" alt="WhatsApp">
+  </a>
+  <a href="https://www.instagram.com/atelie_mellartes?utm_source=ig_web_button_share_sheet&igsh=MTU0ZWI0MjA2amZ1ZA=="  target="_blank" title="Instagram">
+    <img src="/melartes/imagens/insta.png" alt="Instagram">
+  </a>
+  <a href="https://www.facebook.com/amelia.gondim.52" target="_blank" title="Facebook">
+    <img src="/melartes/imagens/face.png" alt="Facebook">
+  </a>
+</div>
+</footer>
+
+<script src="mel.js"></script>
+
+
+</body>
+</html>

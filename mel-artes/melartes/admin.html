@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel da Artesã</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mel.css">
+
+  <style>
+/* Estilos do painel */
+  body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fffaf3;
+  padding: 20px;
+}
+
+input, select, button {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
+#painel-admin {
+  display: none;
+  margin-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <h2>🔐 Área da Artesã</h2>
+  <p>Digite a senha para acessar o painel:</p>
+  <input type="password" id="senha" placeholder="Senha de acesso">
+  <button onclick="verificarSenha()">Entrar</button>
+
+  <div id="painel-admin">
+    <h3>➕ Adicionar novo produto</h3>
+    <form id="form-produto">
+      <input type="text" id="nome" placeholder="Nome do produto" required>
+      <input type="number" id="preco" placeholder="Preço" required>
+      <input type="file" id="imagem" accept="image/*" multiple>
+
+      <select id="categoria" required>
+        <option value="">Escolha a categoria</option>
+        <option value="croche">Crochê</option>
+        <option value="bonecas">Bonecas</option>
+        <option value="perfumes">Perfumes</option>
+        <option value="roupas">Roupas</option>
+        <option value="tapetes">Tapetes</option>
+        <option value="toalhas">Toalhas</option>
+        <option value="diversos">Diversos</option>
+      </select>
+
+      <button type="submit">Salvar produto</button>
+    </form>
+
+    <h3>🗑️ Remover produtos cadastrados</h3>
+    <ul id="lista-produtos"></ul>
+
+    <h3>🙈 Ocultar produtos da vitrine</h3>
+    <input type="text" id="nome-ocultar" placeholder="Nome do produto fixo">
+    <button onclick="ocultarProduto()">Ocultar produto</button>
+  </div>
+
+<script>
+function verificarSenha() {
+  const senha = document.getElementById('senha')?.value;
+  if (senha === 'melartes2025') {
+    document.getElementById('painel-admin').style.display = 'block';
+    atualizarLista();
+  } else {
+    alert('Senha incorreta!');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('form-produto');
+  const lista = document.getElementById('lista-produtos');
+  const ocultarInput = document.getElementById('nome-ocultar');
+  const ocultarBtn = document.querySelector('button[onclick="ocultarProduto()"]');
+
+ if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nome = document.getElementById('nome').value.trim();
+      const preco = parseFloat(document.getElementById('preco').value);
+      const categoria = document.getElementById('categoria').value;
+      const imagemInput = document.getElementById('imagem');
+      const arquivos = imagemInput.files;
+
+      if (!nome || isNaN(preco) || arquivos.length === 0 || !categoria) {
+        alert('Preencha todos os campos corretamente.');
+        return;
+      }
+      if (arquivos.length > 3) {
+  alert('Você pode enviar no máximo 3 imagens por produto.'); // ✅ Cadastro de produto com imagem
+  
+  return;
+}
+
+      const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+      const existe = produtos.some(p => p.nome === nome && p.categoria === categoria);
+
+      if (existe) {
+        alert('Este produto já foi cadastrado nessa categoria!');
+        return;
+      }
+
+      const imagens = [];
+      let carregadas = 0;
+
+      for (let i = 0; i < arquivos.length; i++) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          imagens.push(reader.result);
+          carregadas++;
+
+          if (carregadas === arquivos.length) {
+            const novoProduto = { nome, preco, imagens, categoria };
+            produtos.push(novoProduto);
+            localStorage.setItem('produtos', JSON.stringify(produtos));
+            alert('Produto adicionado com sucesso!');
+            form.reset();
+            atualizarLista();
+          }
+        };
+        reader.readAsDataURL(arquivos[i]);
+      }
+    });
+  }
+
+  // ✅ Atualiza lista de produtos
+  function atualizarLista() {
+    if (!lista) return;
+    lista.innerHTML = '';
+    const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+
+    produtos.forEach((produto, index) => {
+      const item = document.createElement('li');
+      item.textContent = `${produto.nome} - R$ ${produto.preco.toFixed(2)}`;
+      const btn = document.createElement('button');
+      btn.textContent = 'Remover';
+      btn.style.marginLeft = '10px';
+      btn.onclick = () => {
+        produtos.splice(index, 1);
+        localStorage.setItem('produtos', JSON.stringify(produtos));
+        atualizarLista();
+        alert('Produto removido!');
+      };
+      item.appendChild(btn);
+      lista.appendChild(item);
+    });
+  }
+
+
+  // ✅ Oculta produto da vitrine
+  if (ocultarBtn) {
+    ocultarBtn.addEventListener('click', function () {
+      const nome = ocultarInput.value.trim();
+      if (!nome) return;
+      const ocultos = JSON.parse(localStorage.getItem('ocultos')) || [];
+      if (!ocultos.includes(nome)) {
+        ocultos.push(nome);
+        localStorage.setItem('ocultos', JSON.stringify(ocultos));
+        alert(`Produto "${nome}" ocultado da vitrine.`);
+        ocultarInput.value = '';
+      }
+    });
+  }
+
+  // ✅ Inicializa lista ao carregar
+  atualizarLista();
+});
+</script>
+
+
+</body>
+</html>
